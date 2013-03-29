@@ -1,0 +1,9 @@
+﻿<Window x:Class="Spinnaker.UserInterface.Preferences"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Spinnaker Preferences" Height="350" Width="525">
+    <Grid>
+        <TextBlock Margin="180,141,174.4,149.4" TextWrapping="Wrap" Text="Hello - this is Spinnaker :)" RenderTransformOrigin="0.155,0.565" TextAlignment="Center"/>
+
+    </Grid>
+</Window>
