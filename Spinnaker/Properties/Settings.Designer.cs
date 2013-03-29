@@ -22,5 +22,29 @@ namespace Spinnaker.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string api_key {
+            get {
+                return ((string)(this["api_key"]));
+            }
+            set {
+                this["api_key"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string api_secret {
+            get {
+                return ((string)(this["api_secret"]));
+            }
+            set {
+                this["api_secret"] = value;
+            }
+        }
     }
 }

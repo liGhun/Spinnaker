@@ -1,0 +1,14 @@
+﻿<Window x:Class="Spinnaker.UserInterface.GetCommonParameter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GetCommonParameter" Height="300" Width="300">
+    <Grid>
+        <StackPanel Name="stackpanel_main" Orientation="Vertical">
+            <TextBlock Text="API key" />
+            <TextBox Name="texbox_api_key" />
+            <TextBlock Text="API secret" />
+            <TextBox Name="texbox_api_secret" />
+            <Button Name="button_save" Content="Save" Margin="6" Click="button_save_Click_1" />
+        </StackPanel>
+    </Grid>
+</Window>

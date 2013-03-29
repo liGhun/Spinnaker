@@ -11,7 +11,25 @@ namespace Spinnaker.Model
     {
         public string access_token { get; set; }
         public Token token { get; set; }
-        public User user { get; set; }
+        public User user
+        {
+            get
+            {
+                if (token != null)
+                {
+                    return token.user;
+                }
+                else
+                {
+
+                    return null;
+                }
+            }
+        }
+        public override string ToString()
+        {
+            return "@" + username;
+        }
 
         public string username
         {
@@ -34,7 +52,8 @@ namespace Spinnaker.Model
         {
             if (!string.IsNullOrEmpty(text))
             {
-                Posts.create(this.access_token, text);
+                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text);
+                return response.Item2.success;
             }
             return false;
         }

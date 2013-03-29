@@ -221,10 +221,10 @@ namespace Spinnaker.Controls
                         }
                     }
                 }
-                if (AppController.SavedUsernames.Where(name => name.ToLower().StartsWith(CurrentText.ToLower())).Count() > 0)
+                if (AppController.savedUsernames.Where(name => name.ToLower().StartsWith(CurrentText.ToLower())).Count() > 0)
                 {
                     MatchingTexts.Clear();
-                    foreach (string username in AppController.SavedUsernames.Where(name => name.ToLower().StartsWith(CurrentText.ToLower())))
+                    foreach (string username in AppController.savedUsernames.Where(name => name.ToLower().StartsWith(CurrentText.ToLower())))
                     {
                         MatchingTexts.Add(username);
                         if (MatchingTexts.Count >= 10) { break; }
@@ -270,10 +270,10 @@ namespace Spinnaker.Controls
                         }
                     }
                 }
-                if (AppController.SavedHashtags.Where(tag => tag.ToLower().StartsWith(CurrentText.ToLower())).Count() > 0)
+                if (AppController.savedHashtags.Where(tag => tag.ToLower().StartsWith(CurrentText.ToLower())).Count() > 0)
                 {
                     MatchingTexts.Clear();
-                    foreach (string hashtag in AppController.SavedHashtags.Where(tag => tag.ToLower().StartsWith(CurrentText.ToLower())))
+                    foreach (string hashtag in AppController.savedHashtags.Where(tag => tag.ToLower().StartsWith(CurrentText.ToLower())))
                     {
                         MatchingTexts.Add(hashtag);
                         if (MatchingTexts.Count >= 10) { break; }

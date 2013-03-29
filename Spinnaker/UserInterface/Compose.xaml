@@ -5,9 +5,8 @@
         Title="Compose a new post" Height="203.846" Width="300">
     <Grid >
         <Controls:AutoCompleteTextbox x:Name="autoCompeteTextbox_post" Margin="10,10,10,41"/>
-        <Button Content="Send" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Name="button_send"/>
+        <Button Content="Send" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Name="button_send" Click="button_send_Click"/>
         <ComboBox Name="combobox_accounts" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="120" >
-            <ComboBoxItem Name="test" Content="@lighun"></ComboBoxItem>
         </ComboBox>
     </Grid>
 </Window>

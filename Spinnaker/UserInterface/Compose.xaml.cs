@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Spinnaker.Model;
 
 namespace Spinnaker.UserInterface
 {
@@ -21,6 +22,26 @@ namespace Spinnaker.UserInterface
         public Compose()
         {
             InitializeComponent();
+            combobox_accounts.ItemsSource = AppController.accounts;
+            if (AppController.accounts.Count > 0)
+            {
+                combobox_accounts.SelectedIndex = 0;
+            }
+        }
+
+        private void button_send_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(autoCompeteTextbox_post.textBoxContent.Text))
+            {
+                Account account = combobox_accounts.SelectedItem as Account;
+                if (account != null)
+                {
+                    if (account.send_post(autoCompeteTextbox_post.textBoxContent.Text))
+                    {
+                        Close();
+                    }
+                }
+            }
         }
     }
 }
