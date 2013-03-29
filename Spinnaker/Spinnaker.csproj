@@ -62,7 +62,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\AutoCompleteTextbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\Compose.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,9 +83,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppController.cs" />
+    <Compile Include="Controls\AutoCompleteTextbox.xaml.cs">
+      <DependentUpon>AutoCompleteTextbox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Draft.cs" />
     <Compile Include="Model\Outbox.cs" />
+    <Compile Include="UserInterface\Compose.xaml.cs">
+      <DependentUpon>Compose.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\Preferences.xaml.cs">
       <DependentUpon>Preferences.xaml</DependentUpon>
       <SubType>Code</SubType>

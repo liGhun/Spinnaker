@@ -4,6 +4,7 @@
         Title="Spinnaker Preferences" Height="350" Width="525">
     <Grid>
         <TextBlock Margin="180,141,174.4,149.4" TextWrapping="Wrap" Text="Hello - this is Spinnaker :)" RenderTransformOrigin="0.155,0.565" TextAlignment="Center"/>
+        <Button Content="Open compose windows (testing)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="239" RenderTransformOrigin="-0.501,-0.232" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

@@ -10,8 +10,13 @@ namespace Spinnaker
     {
         public static AppController Current;
         public Preferences preferences;
+        public static List<string> SavedUsernames;
+        public static List<string> SavedHashtags;
+        
         private AppController()
         {
+            SavedUsernames = new List<string>();
+            SavedHashtags = new List<string>();
             preferences = new Preferences();
             preferences.Show();
         }
