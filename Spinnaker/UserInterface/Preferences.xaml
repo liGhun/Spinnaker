@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Spinnaker Preferences" Height="350" Width="525"
         Closing="Window_Closing_1">
-    <Grid>
-        <TextBlock Margin="180,141,174.4,149.4" TextWrapping="Wrap" Text="Hello - this is Spinnaker :)" RenderTransformOrigin="0.155,0.565" TextAlignment="Center"/>
-        <Button Content="Open compose windows (testing)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="239" RenderTransformOrigin="-0.501,-0.232" Click="Button_Click_1"/>
-
+    <Grid Margin="0">
+        <TextBlock Margin="184,10,170.4,0" TextWrapping="Wrap" Text="Hello - this is Spinnaker :)" RenderTransformOrigin="0.155,0.565" TextAlignment="Center" Height="32" VerticalAlignment="Top"/>
+        <Button Content="Open compose windows (testing)" Margin="140,74,139.4,0" VerticalAlignment="Top" RenderTransformOrigin="-0.501,-0.232" Click="Button_Click_1"/>
+        <Button Content="Add another account" Name="button_add_another_account" Margin="140,47,139.4,0" VerticalAlignment="Top" Click="button_add_another_account_Click"/>
+        <ListView Name="listview_accounts" Margin="140,101,139.4,53.4" />
+        <Button Content="Hide preferences" Name="button_hide_preferences" HorizontalAlignment="Left" Margin="140,274,0,0" VerticalAlignment="Top" Width="115" Click="button_hide_preferences_Click_1" />
+        <Button Content="Exit app" Name="button_exit_app" HorizontalAlignment="Left" Margin="260,274,0,0" VerticalAlignment="Top" Width="119" Click="button_exit_app_Click_1"/>
     </Grid>
 </Window>

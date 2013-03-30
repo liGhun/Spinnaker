@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.ObjectModel;
 using Spinnaker.UserInterface;
 
 namespace Spinnaker
@@ -16,13 +17,13 @@ namespace Spinnaker
         public Preferences preferences;
         public static List<string> savedUsernames;
         public static List<string> savedHashtags;
-        public static List<Model.Account> accounts;
+        public static ObservableCollection<Model.Account> accounts;
         
         private AppController()
         {
             savedUsernames = new List<string>();
             savedHashtags = new List<string>();
-            accounts = new List<Model.Account>();
+            accounts = new ObservableCollection<Model.Account>();
 
             if (!string.IsNullOrEmpty(Common.api_key) && !string.IsNullOrEmpty(Common.api_secret))
             {

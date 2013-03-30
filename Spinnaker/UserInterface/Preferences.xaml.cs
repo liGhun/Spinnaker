@@ -23,6 +23,7 @@ namespace Spinnaker.UserInterface
         public Preferences()
         {
             InitializeComponent();
+            listview_accounts.ItemsSource = AppController.accounts;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -41,6 +42,22 @@ namespace Spinnaker.UserInterface
             access_tokens.TrimEnd('|');
             Properties.Settings.Default.access_tokens = Crypto.EncryptString(Crypto.ToSecureString(access_tokens));
             Properties.Settings.Default.Save();
+        }
+
+        private void button_add_another_account_Click(object sender, RoutedEventArgs e)
+        {
+            AppController.Current.add_new_account();
+        }
+
+        private void button_hide_preferences_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button_exit_app_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            App.Current.Shutdown();
         }
     }
 }
