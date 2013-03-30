@@ -15,6 +15,9 @@ namespace Spinnaker
 
 
         public Preferences preferences;
+        private UserInterface.Startup startup;
+
+
         public static List<string> savedUsernames;
         public static List<string> savedHashtags;
         public static ObservableCollection<Model.Account> accounts;
@@ -24,6 +27,9 @@ namespace Spinnaker
             savedUsernames = new List<string>();
             savedHashtags = new List<string>();
             accounts = new ObservableCollection<Model.Account>();
+
+            startup = new Startup();
+            startup.Show();
 
             if (!string.IsNullOrEmpty(Common.api_key) && !string.IsNullOrEmpty(Common.api_secret))
             {
@@ -48,10 +54,11 @@ namespace Spinnaker
         public void startup_completed()
         {
             load_stored_accounts();
-
             preferences = new Preferences();
+
+            startup.Close();
             preferences.Show();
-            
+            preferences.register_hotkey();
             if (accounts.Count == 0)
             {
                 add_new_account();

@@ -35,10 +35,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\spinnaker_32.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AppNetDotNet, Version=1.6.0.0, Culture=neutral, PublicKeyToken=c5ee942792c9b1c6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AppNet.NET.1.5.3.1\lib\net40-full\AppNetDotNet.dll</HintPath>
+      <HintPath>..\packages\AppNet.NET.1.5.3.2\lib\net40-full\AppNetDotNet.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,6 +50,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GlobalHotKeys.cs" />
+    <Compile Include="UserInterface\Startup.xaml.cs">
+      <DependentUpon>Startup.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\AutoCompleteTextbox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +115,10 @@
       <DependentUpon>Preferences.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserInterface\Startup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -137,6 +149,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Source and license of the full image.txt" />
+    <Resource Include="Images\spinnaker_1024.png" />
+    <Resource Include="Images\spinnaker_32.ico" />
+    <Resource Include="Images\spinnaker_32.png" />
+    <Resource Include="Images\spinnaker_512.ico" />
+    <Resource Include="Images\spinnaker_512.png" />
+    <Resource Include="Images\spinnaker_full_image.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

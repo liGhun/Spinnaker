@@ -12,20 +12,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Interop;
+using Spinnaker.GlobalHotKeys;
 
 namespace Spinnaker.UserInterface
 {
-    /// <summary>
+        /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class Preferences : Window
     {
+        
+
         public Preferences()
         {
             InitializeComponent();
             listview_accounts.ItemsSource = AppController.accounts;
+
         }
 
+        public void register_hotkey()
+        {
+            HotKeyHost hotKeyHost = new HotKeyHost((HwndSource)HwndSource.FromVisual(this));
+            HotKey hotkey = new HotKey(Key.P, ModifierKeys.Shift|ModifierKeys.Control, true);
+            hotkey.HotKeyPressed += new EventHandler<HotKeyEventArgs>(delegate(Object o, HotKeyEventArgs e)
+            {
+                Compose compose = new Compose();
+                compose.Show();
+            });
+            hotKeyHost.AddHotKey(hotkey);
+        }
+
+       
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Compose compose = new Compose();

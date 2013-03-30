@@ -1,0 +1,8 @@
+﻿<Window x:Class="Spinnaker.UserInterface.Startup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Startup" Height="512" Width="512" ResizeMode="NoResize" WindowStyle="None" Icon="/Spinnaker;component/Images/spinnaker_512.png">
+    <Grid>
+        <Image Name="image_logo" Source="/Spinnaker;component/Images/spinnaker_512.png"  />
+    </Grid>
+</Window>
