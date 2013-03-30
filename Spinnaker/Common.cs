@@ -12,5 +12,6 @@ namespace Spinnaker
         public static string api_secret = "";
         public static string redirect_url = "http://www.nymphicusapp.com/windows/appnet/spinnaker/index.html";
         public static string homepage_url = "";
+        public static string crypto_salt = "4f8f8dc1-5961-49a4-8f29-5aa3653efc52";
     }
 }

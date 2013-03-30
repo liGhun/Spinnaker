@@ -30,5 +30,17 @@ namespace Spinnaker.UserInterface
             Compose compose = new Compose();
             compose.Show();
         }
+
+        private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string access_tokens = "";
+            foreach (Model.Account account in AppController.accounts)
+            {
+                access_tokens += account.access_token + "|||";
+            }
+            access_tokens.TrimEnd('|');
+            Properties.Settings.Default.access_tokens = Crypto.EncryptString(Crypto.ToSecureString(access_tokens));
+            Properties.Settings.Default.Save();
+        }
     }
 }

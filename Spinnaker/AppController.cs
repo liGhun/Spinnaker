@@ -46,11 +46,38 @@ namespace Spinnaker
 
         public void startup_completed()
         {
+            load_stored_accounts();
+
             preferences = new Preferences();
             preferences.Show();
+            
             if (accounts.Count == 0)
             {
                 add_new_account();
+            }
+        }
+
+        private void load_stored_accounts()
+        {
+            string[] delimiter = { "|||" };
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.access_tokens))
+            {
+                string[] access_tokens = Crypto.ToInsecureString(Crypto.DecryptString(Properties.Settings.Default.access_tokens)).Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+                if (access_tokens.Length > 0)
+                {
+                    foreach (string access_token in access_tokens)
+                    {
+                        Model.Account account = new Model.Account();
+                        account.access_token = access_token;
+                        Tuple<AppNetDotNet.Model.Token, AppNetDotNet.ApiCalls.ApiCallResponse> token_response = AppNetDotNet.ApiCalls.Tokens.get(account.access_token);
+                        if (token_response.Item2.success)
+                        {
+                            account.token = token_response.Item1;
+                            accounts.Add(account);
+                            return;
+                        }
+                    }
+                }
             }
         }
 

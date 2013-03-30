@@ -46,5 +46,17 @@ namespace Spinnaker.Properties {
                 this["api_secret"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string access_tokens {
+            get {
+                return ((string)(this["access_tokens"]));
+            }
+            set {
+                this["access_tokens"] = value;
+            }
+        }
     }
 }
