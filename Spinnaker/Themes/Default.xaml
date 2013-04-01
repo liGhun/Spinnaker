@@ -31,11 +31,14 @@
 
     </Style>
 
-
-
-
-
     <Style TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="#222"></Setter>
+        <Setter Property="Foreground" Value="#eee"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+    </Style>
+
+
+    <Style TargetType="{x:Type ListView}">
         <Setter Property="Background" Value="#222"></Setter>
         <Setter Property="Foreground" Value="#eee"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>

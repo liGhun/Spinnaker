@@ -27,6 +27,42 @@ namespace Spinnaker.UserInterface
             {
                 combobox_accounts.SelectedIndex = 0;
             }
+            autoCompeteTextbox_post.textBoxContent.TextChanged += textBoxContent_TextChanged;
+        }
+
+        void textBoxContent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (button_send == null)
+            {
+                return;
+            }
+            button_send.IsEnabled = true;
+            int remaining_chars = 255;
+            
+            if (textblock_remaining_chars != null)
+            {
+                remaining_chars -= autoCompeteTextbox_post.textBoxContent.Text.Length;
+                textblock_remaining_chars.Text = remaining_chars.ToString();
+            }
+            if (remaining_chars < 0)
+            {
+                textblock_remaining_chars.Foreground = Brushes.Red;
+                button_send.IsEnabled = false;
+            }
+            else if (remaining_chars < 3)
+            {
+                textblock_remaining_chars.Foreground = Brushes.Yellow;
+            }
+            else
+            {
+                textblock_remaining_chars.Foreground = Brushes.White;
+            }
+        }
+
+        public void open()
+        {
+            this.Show();
+            autoCompeteTextbox_post.textBoxContent.Focus();
         }
 
         private void button_send_Click(object sender, RoutedEventArgs e)

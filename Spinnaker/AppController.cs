@@ -91,6 +91,7 @@ namespace Spinnaker
 
         public void add_new_account()
         {
+            AppNetDotNet.Model.Authorization.registerAppInRegistry(AppNetDotNet.Model.Authorization.registerBrowserEmulationValue.IE8Always, alsoCreateVshostEntry: true);
             AppNetDotNet.Model.Authorization.clientSideFlow auth_window = new AppNetDotNet.Model.Authorization.clientSideFlow(api_key, Common.redirect_url, "basic write_post files");
             auth_window.AuthSuccess += auth_window_AuthSuccess;
             auth_window.showAuthWindow();
@@ -122,6 +123,12 @@ namespace Spinnaker
             {
                 Current = new AppController();
             }
+        }
+
+        public void open_compose_window(string initial_text = "") 
+        {
+            UserInterface.Compose compose = new Compose();
+            compose.open();
         }
     }
 }

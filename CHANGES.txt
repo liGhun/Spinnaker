@@ -1,0 +1,13 @@
+0.2
+Upgrade to AppNet.NET 1.6.2
+ - authorization of different accounts now possible without restarting the app
+ - registry key to enable non-Quirks-Mode in Auth window added
+Compose window now always on top
+When opening the compose window the texbox to enter the posted is selected by default already
+Compose window now has reminaing chars counter (and disables send button below zero)
+List of accounts now with dark background (and because of this readable)
+Hitting the close button of preferences now quits the app (of course later on tray icon instead)
+Note: preferences are not updated automatically - you need to rauthorize
+
+0.1
+Initial release

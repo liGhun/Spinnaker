@@ -37,8 +37,7 @@ namespace Spinnaker.UserInterface
             HotKey hotkey = new HotKey(Key.P, ModifierKeys.Shift|ModifierKeys.Control, true);
             hotkey.HotKeyPressed += new EventHandler<HotKeyEventArgs>(delegate(Object o, HotKeyEventArgs e)
             {
-                Compose compose = new Compose();
-                compose.Show();
+                AppController.Current.open_compose_window();
             });
             hotKeyHost.AddHotKey(hotkey);
         }
@@ -46,8 +45,7 @@ namespace Spinnaker.UserInterface
        
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Compose compose = new Compose();
-            compose.Show();
+            AppController.Current.open_compose_window();
         }
 
         private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
@@ -60,6 +58,7 @@ namespace Spinnaker.UserInterface
             access_tokens.TrimEnd('|');
             Properties.Settings.Default.access_tokens = Crypto.EncryptString(Crypto.ToSecureString(access_tokens));
             Properties.Settings.Default.Save();
+            App.Current.Shutdown();
         }
 
         private void button_add_another_account_Click(object sender, RoutedEventArgs e)
