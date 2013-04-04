@@ -31,6 +31,23 @@ namespace Spinnaker
             startup = new Startup();
             startup.Show();
 
+            try
+            {
+                if (!Properties.Settings.Default.settings_updated)
+                {
+                    Properties.Settings.Default.Upgrade();
+                    Properties.Settings.Default.settings_updated = true;
+                }
+            }
+            catch
+            {
+                try
+                {
+                    Properties.Settings.Default.Reset();
+                }
+                catch { }
+            }
+
             if (!string.IsNullOrEmpty(Common.api_key) && !string.IsNullOrEmpty(Common.api_secret))
             {
                 AppController.api_key = Common.api_key;
@@ -82,7 +99,6 @@ namespace Spinnaker
                         {
                             account.token = token_response.Item1;
                             accounts.Add(account);
-                            return;
                         }
                     }
                 }

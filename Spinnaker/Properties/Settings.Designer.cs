@@ -58,5 +58,17 @@ namespace Spinnaker.Properties {
                 this["access_tokens"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool settings_updated {
+            get {
+                return ((bool)(this["settings_updated"]));
+            }
+            set {
+                this["settings_updated"] = value;
+            }
+        }
     }
 }

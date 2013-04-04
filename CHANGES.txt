@@ -4,6 +4,7 @@ Window layout changed (semi transparent, rounded corner, no more top bar)
 Clicking and holding the mouse in a window moves it
 Accounts listings (prefernces and combobox in compose window) now show the user avatar image
 Selecting another account in combobox / compose window refocuses the text enter area
+Fix: loading of more than one account failed (only first was loaded)
 
 0.2
 Upgrade to AppNet.NET 1.6.2
