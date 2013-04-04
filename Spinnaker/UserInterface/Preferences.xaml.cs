@@ -159,5 +159,11 @@ namespace Spinnaker.UserInterface
             this.Close();
             App.Current.Shutdown();
         }
+
+        private void border_with_roundes_edges_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+                this.DragMove();
+        }
     }
 }

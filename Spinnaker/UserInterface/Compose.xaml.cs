@@ -79,5 +79,16 @@ namespace Spinnaker.UserInterface
                 }
             }
         }
+
+        private void button_close_window_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Grid_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+                this.DragMove();
+        }
     }
 }

@@ -3,7 +3,7 @@
 
 
     <Style TargetType="{x:Type Window}">
-        <Setter Property="Background" Value="#222"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Foreground" Value="#eee"></Setter>
     </Style>
 
@@ -21,8 +21,13 @@
         <Setter Property="Foreground" Value="#eee"></Setter>
     </Style>
 
+    <Style TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="Opacity" Value="0.9"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+    </Style>
+
     <Style TargetType="{x:Type Grid}">
-        <Setter Property="Background" Value="#222"></Setter>
 
     </Style>
 
