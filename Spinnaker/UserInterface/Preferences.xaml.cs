@@ -22,14 +22,97 @@ namespace Spinnaker.UserInterface
     /// </summary>
     public partial class Preferences : Window
     {
-        
+
+        private WindowState m_storedWindowState = WindowState.Normal;
+        private System.Windows.Forms.NotifyIcon m_notifyIcon;
+        private System.Windows.Forms.ContextMenu m_notifyMenu;
 
         public Preferences()
         {
             InitializeComponent();
             listview_accounts.ItemsSource = AppController.accounts;
 
+            #region Tray icon init
+            // from my Desktop Google Reader project
+
+            try
+            {
+                m_notifyIcon = new System.Windows.Forms.NotifyIcon();
+                m_notifyIcon.Text = "Spinnaker";
+
+                System.IO.Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Spinnaker;component/Images/spinnaker_32.ico")).Stream;
+                m_notifyIcon.Icon = new System.Drawing.Icon(iconStream);
+                m_notifyIcon.DoubleClick += new EventHandler(m_notifyIcon_Click);
+
+                m_notifyMenu = new System.Windows.Forms.ContextMenu();
+                m_notifyMenu.MenuItems.Add("Spinnaker");
+                m_notifyMenu.MenuItems.Add("-");
+                m_notifyMenu.MenuItems.Add(new System.Windows.Forms.MenuItem("Open Prefernces", new System.EventHandler(trayContextShow)));
+                m_notifyMenu.MenuItems.Add(new System.Windows.Forms.MenuItem("Compose new post", new System.EventHandler(trayContextPost)));
+                m_notifyMenu.MenuItems.Add("-");
+                m_notifyMenu.MenuItems.Add(new System.Windows.Forms.MenuItem("Quit", new System.EventHandler(trayContextQuit)));
+
+                m_notifyIcon.ContextMenu = m_notifyMenu;
+            }
+            catch (Exception exp)
+            {
+                // you might have changed the binary name or the icon path - please update you m_notifyIcon code
+                Console.WriteLine(exp.Message);
+            }
+
+            #endregion
+
         }
+
+        #region Tray icon methods
+
+        protected void trayContextShow(Object sender, System.EventArgs e)
+        {
+            Show();
+        }
+
+        protected void trayContextPost(Object sender, System.EventArgs e)
+        {
+            AppController.Current.open_compose_window();
+        }
+
+        protected void trayContextQuit(Object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
+
+        void OnStateChanged(object sender, EventArgs args)
+        {
+            if (WindowState != WindowState.Minimized)
+            {
+                m_storedWindowState = WindowState;
+            }
+
+
+        }
+        void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs args)
+        {
+            CheckTrayIcon();
+        }
+
+        void m_notifyIcon_Click(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = m_storedWindowState;
+        }
+        void CheckTrayIcon()
+        {
+            ShowTrayIcon(!IsVisible);
+        }
+
+        void ShowTrayIcon(bool show)
+        {
+            if (m_notifyIcon != null)
+                m_notifyIcon.Visible = show;
+        }
+
+
+        #endregion
 
         public void register_hotkey()
         {

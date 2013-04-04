@@ -1,3 +1,6 @@
+0.3
+Added tray icon
+
 0.2
 Upgrade to AppNet.NET 1.6.2
  - authorization of different accounts now possible without restarting the app
