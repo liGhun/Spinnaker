@@ -62,6 +62,7 @@ namespace Spinnaker.UserInterface
         public void open()
         {
             this.Show();
+            this.Focus();
             autoCompeteTextbox_post.textBoxContent.Focus();
         }
 
@@ -89,6 +90,11 @@ namespace Spinnaker.UserInterface
         {
             if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
                 this.DragMove();
+        }
+
+        private void combobox_accounts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            autoCompeteTextbox_post.textBoxContent.Focus();
         }
     }
 }

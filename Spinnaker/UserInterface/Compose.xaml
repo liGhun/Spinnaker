@@ -10,7 +10,7 @@
     <Grid Background="Transparent" MouseMove="Grid_MouseMove_1">
         <Controls:AutoCompleteTextbox x:Name="autoCompeteTextbox_post" Margin="10,10,10,41"/>
         <Button Content="Send" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Name="button_send" Click="button_send_Click"/>
-        <ComboBox Name="combobox_accounts" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="120" >
+        <ComboBox Name="combobox_accounts" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="120" SelectionChanged="combobox_accounts_SelectionChanged" >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

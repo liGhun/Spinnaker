@@ -157,7 +157,6 @@ namespace Spinnaker.UserInterface
         private void button_exit_app_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
-            App.Current.Shutdown();
         }
 
         private void border_with_roundes_edges_MouseMove_1(object sender, MouseEventArgs e)
