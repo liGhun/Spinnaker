@@ -5,6 +5,8 @@ Spinnaker is an Open Source client to [App.net](http://app.net) with the goal of
 
 It's not meant to fetch timelines or similar - just for fast posting.
 
+I provide a compiled version with a [setup here for download](http://www.li-ghun.de/Downloads/Spinnaker/app.publish/publish.htm).
+
 It's based on my Open Source library to App.net called [AppNet.NET](https://github.com/liGhun/AppNet.NET).
 
 ## Notes for developers ##
