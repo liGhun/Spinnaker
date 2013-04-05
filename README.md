@@ -4,6 +4,7 @@ Spinnaker
 Spinnaker is an Open Source client to [App.net](http://app.net) with the goal of easily posting to your timeline(s). It is inspired by Sail available on the Mac.
 
 It's not meant to fetch timelines or similar - just for fast posting.
+Simply press Ctrl-Shift-p to open the compose regardless if Spinnaker is in front or not.
 
 I provide a compiled version with a [setup here for download](http://www.li-ghun.de/Downloads/Spinnaker/app.publish/publish.htm).
 
