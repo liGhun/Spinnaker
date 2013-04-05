@@ -52,7 +52,25 @@ namespace Spinnaker.Model
         {
             if (!string.IsNullOrEmpty(text))
             {
-                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text);
+                List<AppNetDotNet.Model.File> toBeAddedFiles = null;
+                if (!string.IsNullOrEmpty(local_file_to_embed))
+                {
+                    if (System.IO.File.Exists(local_file_to_embed))
+                    {
+                        Tuple<AppNetDotNet.Model.File, ApiCallResponse> uploadedFile = AppNetDotNet.ApiCalls.Files.create(this.access_token, local_file_path:local_file_to_embed, type: "de.li-ghun.spinnaker.image");
+                        if (uploadedFile.Item2.success)
+                        {
+                            toBeAddedFiles = new List<File>();
+                            toBeAddedFiles.Add(uploadedFile.Item1);
+                        }
+                        else
+                        {
+                            toBeAddedFiles = null;
+                        }
+                    }
+                }
+
+                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text, toBeEmbeddedFiles:toBeAddedFiles);
                 return response.Item2.success;
             }
             return false;

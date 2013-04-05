@@ -40,6 +40,25 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+            <Button Name="button_upload_photo" Margin="0,0,215,14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="14" Click="button_upload_photo_Click_1" ToolTip="Upload an image" MouseRightButtonDown="button_upload_photo_MouseRightButtonDown_1">
+                <Image Name="image_upload_photo" Source="/Spinnaker;component/Images/camera_white.png">
+                    <Image.Style>
+                        <Style>
+                            <Setter Property="Image.Opacity" Value="0.7" />
+                            <Style.Triggers>
+                                <Trigger  Property="Image.IsMouseOver" Value="True">
+                                    <Setter Property="Image.Opacity" Value="1.0" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Border>
 </Window>

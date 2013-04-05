@@ -1,5 +1,5 @@
 0.4
-
+Image upload added
 Fix: tray icon will now be removed on quitting the app
 
 0.3

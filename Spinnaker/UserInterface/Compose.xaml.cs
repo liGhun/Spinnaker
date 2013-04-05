@@ -30,6 +30,8 @@ namespace Spinnaker.UserInterface
             autoCompeteTextbox_post.textBoxContent.TextChanged += textBoxContent_TextChanged;
         }
 
+        public string path_to_be_uploaded_image { get; set; }
+
         void textBoxContent_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (button_send == null)
@@ -73,7 +75,7 @@ namespace Spinnaker.UserInterface
                 Account account = combobox_accounts.SelectedItem as Account;
                 if (account != null)
                 {
-                    if (account.send_post(autoCompeteTextbox_post.textBoxContent.Text))
+                    if (account.send_post(autoCompeteTextbox_post.textBoxContent.Text,path_to_be_uploaded_image))
                     {
                         Close();
                     }
@@ -95,6 +97,44 @@ namespace Spinnaker.UserInterface
         private void combobox_accounts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             autoCompeteTextbox_post.textBoxContent.Focus();
+        }
+
+        private void button_upload_photo_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(path_to_be_uploaded_image))
+            {
+                return;
+            }
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            dlg.DefaultExt = ".png"; // Default file extension
+            dlg.Filter = "Images (*.png,*.jpg,*.gif,*.tif)|*.png;*.jpeg;*.jpg;*.gif;*.tif;*.tiff"; // Filter files by extension
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                if (System.IO.File.Exists(filename))
+                {
+                    path_to_be_uploaded_image = filename;
+                    image_upload_photo.Opacity = 1.0;
+                    autoCompeteTextbox_post.textBoxContent.Text += " photos.app.net/{post_id}/1";
+                    button_upload_photo.ToolTip = "Right click to remove the image";
+                }
+            }
+        }
+
+        private void button_upload_photo_MouseRightButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            path_to_be_uploaded_image = "";
+            image_upload_photo.Opacity = 0.7;
+            if(autoCompeteTextbox_post.textBoxContent.Text.Contains("photos.app.net/{post_id}/1")) {
+                autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Replace("photos.app.net/{post_id}/1","");
+            }
+            button_upload_photo.ToolTip = "Upload an image";
         }
     }
 }
