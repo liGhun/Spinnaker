@@ -13,6 +13,7 @@ namespace Spinnaker
         public static string api_key = "";
         public static string api_secret = "";
         public static string version_string = "";
+        public static Model.Account last_used_account;
 
         public Preferences preferences;
         private UserInterface.Startup startup;
@@ -27,6 +28,7 @@ namespace Spinnaker
             savedUsernames = new List<string>();
             savedHashtags = new List<string>();
             accounts = new ObservableCollection<Model.Account>();
+            accounts.CollectionChanged += accounts_CollectionChanged;
             AppController.version_string = pretty_version.get_nice_version_string();
 
             startup = new Startup();
@@ -67,6 +69,37 @@ namespace Spinnaker
             }
 
             startup_completed();
+        }
+
+        void accounts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (Model.Account account in e.NewItems)
+                {
+                    AppNetDotNet.ApiCalls.Parameters parameters = new AppNetDotNet.ApiCalls.Parameters();
+                    parameters.count = 200;
+                    Tuple<List<AppNetDotNet.Model.User>,AppNetDotNet.ApiCalls.ApiCallResponse> followings = AppNetDotNet.ApiCalls.Users.getFollowingsOfUser(account.access_token,account.username,parameters);
+                    if(followings.Item2.success) {
+                        foreach(AppNetDotNet.Model.User following in followings.Item1) {
+                            if(!savedUsernames.Contains(following.username)) {
+                                savedUsernames.Add("@" + following.username);
+                            }
+                        }
+                    }
+                    Tuple<List<AppNetDotNet.Model.User>, AppNetDotNet.ApiCalls.ApiCallResponse> followers = AppNetDotNet.ApiCalls.Users.getFollowersOfUser(account.access_token, account.username, parameters);
+                    if (followers.Item2.success)
+                    {
+                        foreach (AppNetDotNet.Model.User follower in followers.Item1)
+                        {
+                            if (!savedUsernames.Contains(follower.username))
+                            {
+                                savedUsernames.Add("@" + follower.username);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public void startup_completed()

@@ -27,6 +27,10 @@ namespace Spinnaker.UserInterface
             {
                 combobox_accounts.SelectedIndex = 0;
             }
+            if (AppController.last_used_account != null)
+            {
+                combobox_accounts.SelectedItem = AppController.last_used_account;
+            }
             autoCompeteTextbox_post.textBoxContent.TextChanged += textBoxContent_TextChanged;
             autoCompeteTextbox_post.textBoxContent.PreviewKeyDown += textBoxContent_PreviewKeyDown;
         }
@@ -89,6 +93,7 @@ namespace Spinnaker.UserInterface
                 {
                     if (account.send_post(autoCompeteTextbox_post.textBoxContent.Text,path_to_be_uploaded_image))
                     {
+                        AppController.last_used_account = account;
                         Close();
                     }
                 }

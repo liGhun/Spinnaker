@@ -1,5 +1,7 @@
 0.4
 Image upload added
+Username completion added (for followers and followings)
+When opening the compose window the account which has sent the last post is selected automatically   
 Added app name and version to startup and preferences window
 Added hint to ctrl-alt-p to the create post button
 Pressing ctrl-enter in compose area now sends the post
