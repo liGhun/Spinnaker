@@ -6,9 +6,11 @@ Spinnaker is an Open Source client to [App.net](http://app.net) with the goal of
 It's not meant to fetch timelines or similar - just for fast posting.
 Simply press Ctrl-Shift-p to open the compose regardless if Spinnaker is in front or not.
 
-I provide a compiled version with a [setup here for download](http://www.li-ghun.de/Downloads/Spinnaker/app.publish/publish.htm).
+I provide a compiled version with a **[setup here for download](http://www.li-ghun.de/Downloads/Spinnaker/app.publish/publish.htm)**.
 
 It's based on my Open Source library to App.net called [AppNet.NET](https://github.com/liGhun/AppNet.NET).
+
+<a href='http://www.pledgie.com/campaigns/19753'><img alt='Click here to lend your support to: Spinnaker and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/19753.png?skin_name=chrome' border='0' /></a>
 
 ## Notes for developers ##
 
