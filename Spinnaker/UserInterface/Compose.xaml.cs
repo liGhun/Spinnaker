@@ -32,10 +32,10 @@ namespace Spinnaker.UserInterface
                 combobox_accounts.SelectedItem = AppController.last_used_account;
             }
             autoCompeteTextbox_post.textBoxContent.TextChanged += textBoxContent_TextChanged;
-            autoCompeteTextbox_post.textBoxContent.PreviewKeyDown += textBoxContent_PreviewKeyDown;
+            autoCompeteTextbox_post.textBoxContent.KeyDown += textBoxContent_KeyDown;
         }
 
-        void textBoxContent_PreviewKeyDown(object sender, KeyEventArgs e)
+        void textBoxContent_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == (Key.Return & Key.LeftCtrl) || e.Key == (Key.Enter & Key.LeftCtrl) || e.Key == (Key.Return & Key.RightCtrl) || e.Key == (Key.Enter & Key.RightCtrl))
             {
