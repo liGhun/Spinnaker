@@ -221,6 +221,15 @@
   <ItemGroup>
     <Resource Include="Images\camera_white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TrayIconMenu\preferences.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TrayIconMenu\write.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TrayIconMenu\quit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

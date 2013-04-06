@@ -25,7 +25,7 @@ namespace Spinnaker.UserInterface
 
         private WindowState m_storedWindowState = WindowState.Normal;
         private System.Windows.Forms.NotifyIcon m_notifyIcon;
-        private System.Windows.Forms.ContextMenu m_notifyMenu;
+        private System.Windows.Forms.ContextMenuStrip m_notifyMenu;
 
         public Preferences()
         {
@@ -61,15 +61,37 @@ namespace Spinnaker.UserInterface
                 m_notifyIcon.Icon = new System.Drawing.Icon(iconStream);
                 m_notifyIcon.DoubleClick += new EventHandler(m_notifyIcon_Click);
 
-                m_notifyMenu = new System.Windows.Forms.ContextMenu();
-                m_notifyMenu.MenuItems.Add("Spinnaker");
-                m_notifyMenu.MenuItems.Add("-");
-                m_notifyMenu.MenuItems.Add(new System.Windows.Forms.MenuItem("Open Prefernces", new System.EventHandler(trayContextShow)));
-                m_notifyMenu.MenuItems.Add(new System.Windows.Forms.MenuItem("Compose new post", new System.EventHandler(trayContextPost)));
-                m_notifyMenu.MenuItems.Add("-");
-                m_notifyMenu.MenuItems.Add(new System.Windows.Forms.MenuItem("Quit", new System.EventHandler(trayContextQuit)));
+                #region loading icons
 
-                m_notifyIcon.ContextMenu = m_notifyMenu;
+                System.Drawing.Image preferences_icon = null;
+                System.Drawing.Image quit_icon = null;
+                System.Drawing.Image write_icon = null;
+
+                try {
+                iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Spinnaker;component/Images/TrayIconMenu/preferences.png")).Stream;
+                preferences_icon = System.Drawing.Image.FromStream(iconStream);
+
+                iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Spinnaker;component/Images/TrayIconMenu/quit.png")).Stream;
+                quit_icon = System.Drawing.Image.FromStream(iconStream);
+
+                iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Spinnaker;component/Images/TrayIconMenu/write.png")).Stream;
+                write_icon = System.Drawing.Image.FromStream(iconStream);
+                }
+                catch {}
+
+                #endregion
+
+                m_notifyMenu = new System.Windows.Forms.ContextMenuStrip();
+                m_notifyMenu.Items.Add("Spinnaker");
+                m_notifyMenu.Items.Add("-");
+                m_notifyMenu.Items.Add(new System.Windows.Forms.ToolStripMenuItem("Open Preferences", preferences_icon, new System.EventHandler(trayContextShow)));
+                System.Windows.Forms.ToolStripMenuItem menuitem_compose = new System.Windows.Forms.ToolStripMenuItem("Compose new post", write_icon, new System.EventHandler(trayContextPost));
+                menuitem_compose.ToolTipText = "ctrl-shift-p";
+                m_notifyMenu.Items.Add(menuitem_compose);
+                m_notifyMenu.Items.Add("-");
+                m_notifyMenu.Items.Add(new System.Windows.Forms.ToolStripMenuItem("Quit", quit_icon,new System.EventHandler(trayContextQuit)));
+
+                m_notifyIcon.ContextMenuStrip = m_notifyMenu;
             }
             catch (Exception exp)
             {
