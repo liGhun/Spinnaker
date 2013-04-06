@@ -28,6 +28,18 @@ namespace Spinnaker.UserInterface
                 combobox_accounts.SelectedIndex = 0;
             }
             autoCompeteTextbox_post.textBoxContent.TextChanged += textBoxContent_TextChanged;
+            autoCompeteTextbox_post.textBoxContent.PreviewKeyDown += textBoxContent_PreviewKeyDown;
+        }
+
+        void textBoxContent_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == (Key.Return & Key.LeftCtrl) || e.Key == (Key.Enter & Key.LeftCtrl) || e.Key == (Key.Return & Key.RightCtrl) || e.Key == (Key.Enter & Key.RightCtrl))
+            {
+                if (!string.IsNullOrWhiteSpace(autoCompeteTextbox_post.textBoxContent.Text))
+                {
+                    button_send_Click(null,null);
+                }
+            }
         }
 
         public string path_to_be_uploaded_image { get; set; }

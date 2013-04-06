@@ -2,6 +2,7 @@
 Image upload added
 Added app name and version to startup and preferences window
 Added hint to ctrl-alt-p to the create post button
+Pressing ctrl-enter in compose area now sends the post
 Clicking and holding the mouse now moves the compose window not when you are in the text area (so you can select text again)
 Added BSD license
 Removed big 1024px startup image from soultion (smaller download) 
