@@ -206,7 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Source and license of the full image.txt" />
-    <Resource Include="Images\spinnaker_1024.png" />
     <Resource Include="Images\spinnaker_32.ico" />
     <Resource Include="Images\spinnaker_32.png" />
     <Resource Include="Images\spinnaker_512.ico" />

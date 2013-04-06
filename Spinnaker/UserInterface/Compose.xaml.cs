@@ -90,7 +90,7 @@ namespace Spinnaker.UserInterface
 
         private void Grid_MouseMove_1(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed && Mouse.DirectlyOver != autoCompeteTextbox_post.textBoxContent)
                 this.DragMove();
         }
 

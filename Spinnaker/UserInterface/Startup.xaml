@@ -9,7 +9,7 @@
                 <DropShadowEffect/>
             </TextBlock.Effect>
         </TextBlock>
-        <TextBlock Name="textblock_version" HorizontalAlignment="Left" Margin="20,63,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" FontSize="20" Width="124" Foreground="#FFE0E0E0" RenderTransformOrigin="-1.576,0.742">
+        <TextBlock Name="textblock_version" HorizontalAlignment="Left" Margin="20,63,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" FontSize="20" Width="124" Foreground="#FFE0E0E0" RenderTransformOrigin="-1.576,0.742" FontStyle="Italic">
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect>
