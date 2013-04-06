@@ -12,7 +12,7 @@ namespace Spinnaker
         public static AppController Current;
         public static string api_key = "";
         public static string api_secret = "";
-
+        public static string version_string = "";
 
         public Preferences preferences;
         private UserInterface.Startup startup;
@@ -27,6 +27,7 @@ namespace Spinnaker
             savedUsernames = new List<string>();
             savedHashtags = new List<string>();
             accounts = new ObservableCollection<Model.Account>();
+            AppController.version_string = pretty_version.get_nice_version_string();
 
             startup = new Startup();
             startup.Show();

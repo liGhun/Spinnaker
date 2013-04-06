@@ -32,6 +32,23 @@ namespace Spinnaker.UserInterface
             InitializeComponent();
             listview_accounts.ItemsSource = AppController.accounts;
 
+            textblock_app_name.Text = Spinnaker.Common.app_name;
+            textblock_version_and_license.Text = "";
+            textblock_version_and_license.Inlines.Add(Spinnaker.AppController.version_string);
+
+            textblock_version_and_license.Inlines.Add(" · ");
+
+            Hyperlink link_to_license = new Hyperlink();
+            link_to_license.Click += link_to_license_Click;
+            link_to_license.TextDecorations = null;
+            link_to_license.Foreground = Brushes.White;
+            link_to_license.Cursor = Cursors.Hand;
+            link_to_license.ToolTip = "Open license text (BSD 3)";
+            link_to_license.Inlines.Add("License");
+
+            textblock_version_and_license.Inlines.Add(link_to_license);
+
+
             #region Tray icon init
             // from my Desktop Google Reader project
 
@@ -62,6 +79,15 @@ namespace Spinnaker.UserInterface
 
             #endregion
 
+        }
+
+        void link_to_license_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Spinnaker.Common.license_url);
+            }
+            catch { }
         }
 
         #region Tray icon methods
@@ -128,6 +154,7 @@ namespace Spinnaker.UserInterface
        
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            grid_main.Focus();
             AppController.Current.open_compose_window();
         }
 
@@ -151,16 +178,19 @@ namespace Spinnaker.UserInterface
 
         private void button_add_another_account_Click(object sender, RoutedEventArgs e)
         {
+            grid_main.Focus();
             AppController.Current.add_new_account();
         }
 
         private void button_hide_preferences_Click_1(object sender, RoutedEventArgs e)
         {
+            grid_main.Focus();
             this.Hide();
         }
 
         private void button_exit_app_Click_1(object sender, RoutedEventArgs e)
         {
+            grid_main.Focus();
             this.Close();
         }
 

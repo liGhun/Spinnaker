@@ -12,6 +12,7 @@ namespace Spinnaker
         public static string api_secret = "not needed till now";
         public static string redirect_url = "http://www.nymphicusapp.com/windows/appnet/spinnaker/";
         public static string homepage_url = "";
+        public static string license_url = "https://github.com/liGhun/Spinnaker/blob/master/LICENSE.txt";
         public static string crypto_salt = "4f8f8dc1-5961-49a4-8f29-5aa3653efc52";
     }
 }

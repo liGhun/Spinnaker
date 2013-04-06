@@ -101,6 +101,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="GlobalHotKeys.cs" />
+    <Compile Include="pretty_version.cs" />
     <Compile Include="UserInterface\Startup.xaml.cs">
       <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>

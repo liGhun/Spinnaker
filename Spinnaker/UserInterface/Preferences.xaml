@@ -7,9 +7,13 @@
           WindowStyle="None" AllowsTransparency="True"
     Background="Transparent">
     <Border Name="border_with_roundes_edges" MouseMove="border_with_roundes_edges_MouseMove_1">
-        <Grid Margin="0,0,-0.2,0.4">
-            <TextBlock Margin="10,10,0,0" TextWrapping="Wrap" Text="Hello - this is Spinnaker Alpha:)" RenderTransformOrigin="0.155,0.565" TextAlignment="Center" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="245"/>
-            <Button Content="Open compose windows (testing)" Margin="10,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.501,-0.232" Click="Button_Click_1" HorizontalAlignment="Left" Width="245"/>
+        <Grid Name="grid_main" Focusable="True">
+            <TextBlock Name="textblock_app_name" Margin="10,5,0,0" TextWrapping="Wrap" Text="Spinnaker" TextAlignment="Center" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="244" FontSize="22">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Button Content="Write post (ctrl-shift-p)" Margin="10,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.501,-0.232" Click="Button_Click_1" HorizontalAlignment="Left" Width="245"/>
             <Button Content="Add another account" Name="button_add_another_account" Margin="10,42,0,0" VerticalAlignment="Top" Click="button_add_another_account_Click" HorizontalAlignment="Left" Width="245"/>
             <ListBox Name="listview_accounts" Margin="10,96,0,47.6" Width="245" HorizontalAlignment="Left">
                 <ListBox.ItemTemplate>
@@ -23,6 +27,7 @@
             </ListBox>
             <Button Content="Hide preferences" Name="button_hide_preferences" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="115" Click="button_hide_preferences_Click_1" />
             <Button Content="Exit app" Name="button_exit_app" HorizontalAlignment="Left" Margin="136,269,0,0" VerticalAlignment="Top" Width="119" Click="button_exit_app_Click_1"/>
+            <TextBlock Name="textblock_version_and_license" HorizontalAlignment="Center" Margin="0,0,0,2" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Bottom" />
         </Grid>
     </Border>
 </Window>

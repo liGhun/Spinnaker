@@ -27,6 +27,8 @@ namespace Spinnaker.UserInterface
             double windowHeight = this.Height;
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
+            textblock_app_name.Text = Spinnaker.Common.app_name;
+            textblock_version.Text = Spinnaker.AppController.version_string;
         }
     }
 }

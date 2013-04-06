@@ -1,5 +1,8 @@
 0.4
 Image upload added
+Added app name and version to startup and preferences window
+Added hint to ctrl-alt-p to the create post button
+Added BSD license
 Fix: tray icon will now be removed on quitting the app
 
 0.3

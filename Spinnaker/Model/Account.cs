@@ -63,13 +63,8 @@ namespace Spinnaker.Model
                             toBeAddedFiles = new List<File>();
                             toBeAddedFiles.Add(uploadedFile.Item1);
                         }
-                        else
-                        {
-                            toBeAddedFiles = null;
-                        }
                     }
                 }
-
                 Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text, toBeEmbeddedFiles:toBeAddedFiles);
                 return response.Item2.success;
             }

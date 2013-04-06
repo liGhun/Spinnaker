@@ -4,5 +4,15 @@
         Title="Startup" Height="512" Width="512" ResizeMode="NoResize" WindowStyle="None" Icon="/Spinnaker;component/Images/spinnaker_512.png">
     <Grid>
         <Image Name="image_logo" Source="/Spinnaker;component/Images/spinnaker_512.png"  />
+        <TextBlock Name="textblock_app_name" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Spinnaker" VerticalAlignment="Top" Foreground="#FFE0E0E0" FontSize="36" FontWeight="Bold" FontStyle="Italic">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock Name="textblock_version" HorizontalAlignment="Left" Margin="20,63,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" FontSize="20" Width="124" Foreground="#FFE0E0E0" RenderTransformOrigin="-1.576,0.742">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 </Window>
