@@ -59,7 +59,7 @@ namespace Spinnaker.UserInterface
             
             if (textblock_remaining_chars != null)
             {
-                remaining_chars -= autoCompeteTextbox_post.textBoxContent.Text.Length;
+                remaining_chars -= autoCompeteTextbox_post.NumberOfChars;
                 textblock_remaining_chars.Text = remaining_chars.ToString();
             }
             if (remaining_chars < 0)
@@ -91,7 +91,29 @@ namespace Spinnaker.UserInterface
                 Account account = combobox_accounts.SelectedItem as Account;
                 if (account != null)
                 {
-                    if (account.send_post(autoCompeteTextbox_post.textBoxContent.Text,path_to_be_uploaded_image))
+                    AppNetDotNet.Model.Entities entities = null;
+                    string toBePostedText = autoCompeteTextbox_post.textBoxContent.Text;
+                    if (autoCompeteTextbox_post.MarkdownLinksInText.Count() > 0)
+                    {
+                        entities = new AppNetDotNet.Model.Entities();
+                        entities.links = new List<AppNetDotNet.Model.Entities.Link>();
+                        entities.hashtags = null;
+                        entities.mentions = null;
+                        foreach (KeyValuePair<string, string> link in autoCompeteTextbox_post.MarkdownLinksInText)
+                        {
+                            AppNetDotNet.Model.Entities.Link linkEntity = new AppNetDotNet.Model.Entities.Link();
+                            linkEntity.text = link.Value;
+                            linkEntity.url = link.Key;
+                            int startPosition = toBePostedText.IndexOf(string.Format("[{0}]({1})",linkEntity.text, linkEntity.url));
+                            linkEntity.pos = startPosition;
+                            linkEntity.len = linkEntity.text.Length;
+                            toBePostedText = toBePostedText.Replace(string.Format("[{0}]({1})", linkEntity.text, linkEntity.url), linkEntity.text);
+                            entities.links.Add(linkEntity);
+                        }
+                    }
+
+
+                    if (account.send_post(toBePostedText, path_to_be_uploaded_image, entities:entities))
                     {
                         AppController.last_used_account = account;
                         Close();
@@ -152,6 +174,20 @@ namespace Spinnaker.UserInterface
                 autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Replace("photos.app.net/{post_id}/1","");
             }
             button_upload_photo.ToolTip = "Upload an image";
+        }
+
+        private void button_upload_photo_Drop_1(object sender, DragEventArgs e)
+        {
+            if (e.Data is System.Windows.DataObject &&
+  ((System.Windows.DataObject)e.Data).ContainsFileDropList())
+            {
+                foreach (string filePath in ((System.Windows.DataObject)e.Data).GetFileDropList())
+                {
+                    Console.WriteLine(e);
+                }
+            } 
+            
+            Console.WriteLine(e);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Spinnaker.Model
         }
 
 
-        public bool send_post(string text, string local_file_to_embed = "")
+        public bool send_post(string text, string local_file_to_embed = "", Entities entities = null)
         {
             if (!string.IsNullOrEmpty(text))
             {
@@ -65,7 +65,7 @@ namespace Spinnaker.Model
                         }
                     }
                 }
-                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text, toBeEmbeddedFiles:toBeAddedFiles);
+                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text, toBeEmbeddedFiles:toBeAddedFiles, entities:entities);
                 return response.Item2.success;
             }
             return false;

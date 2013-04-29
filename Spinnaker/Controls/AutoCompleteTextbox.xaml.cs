@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using Spinnaker;
 
 namespace Spinnaker.Controls
@@ -31,6 +32,8 @@ namespace Spinnaker.Controls
         private int HashtagLenght { get; set; }
         private bool ReplacingNow { get; set; }
         private bool ListboxClicked { get; set; }
+        public int NumberOfChars { get; private set; }
+        public Dictionary<string, string> MarkdownLinksInText { get; set; }
 
         public string Text
         {
@@ -48,6 +51,7 @@ namespace Spinnaker.Controls
         {
             InitializeComponent();
 
+            MarkdownLinksInText = new Dictionary<string, string>();
             WordStart = true;
 
             MatchingTexts = new ObservableCollection<string>();
@@ -287,6 +291,21 @@ namespace Spinnaker.Controls
                     popupMatchingUsernames.IsOpen = false;
                 }
             }
+
+            #region links as markups
+
+
+            string pattern = @"\[(?<markupText>[^\]]+)\]\((?<markupLink>[^)]+)\)";
+            NumberOfChars = textBoxContent.Text.Length;
+            MarkdownLinksInText.Clear();
+            foreach (Match match in Regex.Matches(textBoxContent.Text, pattern, RegexOptions.IgnoreCase)) {
+                MarkdownLinksInText.Add(match.Groups["markupLink"].Value,match.Groups["markupText"].Value);
+                NumberOfChars -= 4 + match.Groups["markupLink"].Value.Length;
+            } 
+
+
+
+            #endregion 
         }
 
 
