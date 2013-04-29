@@ -1,3 +1,21 @@
+0.5
+Added MarkDown link parsing - example: [Link title](http://www.li-ghun.de)
+Added link add window (which will add a MarkDown link)
+Add link window automatically detects link in clipboard and puts it into the url field
+ - if link is in clipboard Spinnaker tries to fetch the title of the page automatically
+Added many new keyboard shortcuts:
+ o Compose window:
+  - ctrl - o: change account
+  - ctrl - l: open add link window
+  - ctrl - i: open select window for image
+  - ESC: close compose window
+ o Add link window
+  - ctrl - enter: insert link
+  - ESC: close add link window
+Dragging a file onto the image upload button automatically adds it to the post
+Preferences dialog now has a checkbox to automatically hide it on startup
+  
+
 0.4
 Image upload added
 Username completion added (for followers and followings)
