@@ -70,5 +70,17 @@ namespace Spinnaker.Properties {
                 this["settings_updated"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hide_preferences_on_start {
+            get {
+                return ((bool)(this["hide_preferences_on_start"]));
+            }
+            set {
+                this["hide_preferences_on_start"] = value;
+            }
+        }
     }
 }

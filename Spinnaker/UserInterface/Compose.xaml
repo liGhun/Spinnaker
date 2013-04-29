@@ -30,7 +30,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         <TextBlock Name="textblock_remaining_chars" HorizontalAlignment="Left" Margin="10,0,0,15" TextWrapping="NoWrap" Text="255" VerticalAlignment="Bottom" Width="24" FontWeight="Bold" />
-            <Button Name="button_close_window" Click="button_close_window_Click_1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="10" Height="10" Margin="0,3,10,0" ToolTip="Close window">
+            <Button Name="button_close_window" Click="button_close_window_Click_1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="10" Height="10" Margin="0,3,10,0" ToolTip="Close window (ESC)">
                 <Image Name="image_close_button" Source="/Spinnaker;component/Images/close_white.png">
                     <Image.Style>
                         <Style>

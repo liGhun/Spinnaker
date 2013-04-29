@@ -14,15 +14,15 @@
 
 
     <Border Name="border_with_roundes_edges" Padding="6">
-        <Grid Background="Transparent">
+        <Grid Background="Transparent" Margin="5">
             <StackPanel Name="stackpanel_insertlink" HorizontalAlignment="Stretch">
                 <TextBlock Name="textblock_url" Text="Link" FontSize="14" FontWeight="Bold"/>
                 <TextBox Name="textbox_url" Text="" Padding="3" />
                 <TextBlock Name="textblock_title" Text="Title" FontSize="14" FontWeight="Bold"/>
                 <TextBox Name="textbox_title" Text="" Padding="3" />
             </StackPanel>
-            <Button Name="button_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,0,0,10.2" Width="119" Height="28" VerticalAlignment="Bottom" Click="button_cancel_Click" ToolTip="Insert link now (ctrl - enter)"/>
-            <Button Name="button_insert" Content="Insert link" Margin="165,121,10,10.2" Click="button_insert_Click" ToolTip="Cancel (ESC)"/>
+            <Button Name="button_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,0,0,10.2" Width="119" Height="28" VerticalAlignment="Bottom" Click="button_cancel_Click" ToolTip="Cancel (ESC)"/>
+            <Button Name="button_insert" Content="Insert link" Margin="165,0,10,10.2" Click="button_insert_Click" ToolTip="Insert link now (ctrl - enter)" Height="28" VerticalAlignment="Bottom"/>
 
         </Grid>
     </Border>

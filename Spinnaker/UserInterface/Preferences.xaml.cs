@@ -44,7 +44,7 @@ namespace Spinnaker.UserInterface
             link_to_license.Foreground = Brushes.White;
             link_to_license.Cursor = Cursors.Hand;
             link_to_license.ToolTip = "Open license text (BSD 3)";
-            link_to_license.Inlines.Add("License");
+            link_to_license.Inlines.Add("BSD 3 License");
 
             textblock_version_and_license.Inlines.Add(link_to_license);
 

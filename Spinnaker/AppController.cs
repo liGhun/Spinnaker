@@ -114,6 +114,10 @@ namespace Spinnaker
             {
                 add_new_account();
             }
+            if (Properties.Settings.Default.hide_preferences_on_start)
+            {
+                preferences.Hide();
+            }
         }
 
         private void load_stored_accounts()
