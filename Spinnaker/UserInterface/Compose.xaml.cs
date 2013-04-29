@@ -19,9 +19,15 @@ namespace Spinnaker.UserInterface
     /// </summary>
     public partial class Compose : Window
     {
+        public static RoutedCommand insert_link_command = new RoutedCommand();
+        public static RoutedCommand add_image_command = new RoutedCommand();
+        public static RoutedCommand account_scroll_command = new RoutedCommand();
+        public static RoutedCommand cancel_command = new RoutedCommand();
+
         public Compose()
         {
             InitializeComponent();
+            
             combobox_accounts.ItemsSource = AppController.accounts;
             if (AppController.accounts.Count > 0)
             {
@@ -33,6 +39,11 @@ namespace Spinnaker.UserInterface
             }
             autoCompeteTextbox_post.textBoxContent.TextChanged += textBoxContent_TextChanged;
             autoCompeteTextbox_post.textBoxContent.KeyDown += textBoxContent_KeyDown;
+
+            insert_link_command.InputGestures.Add(new KeyGesture(Key.L, ModifierKeys.Control));
+            add_image_command.InputGestures.Add(new KeyGesture(Key.I, ModifierKeys.Control));
+            cancel_command.InputGestures.Add(new KeyGesture(Key.Escape, ModifierKeys.None));
+            account_scroll_command.InputGestures.Add(new KeyGesture(Key.O, ModifierKeys.Control));
         }
 
         void textBoxContent_KeyDown(object sender, KeyEventArgs e)
@@ -189,5 +200,62 @@ namespace Spinnaker.UserInterface
             
             Console.WriteLine(e);
         }
+
+        private void button_insert_link_Click(object sender, RoutedEventArgs e)
+        {
+            UserInterface.AddLink add_link_window = new AddLink();
+            add_link_window.Left = this.Left;
+            add_link_window.Top = this.Top;
+            add_link_window.Width = this.Width;
+            add_link_window.Height = this.Height;
+            add_link_window.InsertLink += add_link_window_InsertLink;
+            add_link_window.Show();
+        }
+
+        void add_link_window_InsertLink(object sender, AddLink.InsertLinkEventArgs e)
+        {
+            if (e != null)
+            {
+                if (e.success)
+                {
+                    autoCompeteTextbox_post.textBoxContent.Text += " " + e.insert_string;
+                }
+            }
+        }
+
+
+
+        #region keyboard shortcuts
+
+        private void command_insert_link_executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            button_insert_link_Click(null, null);
+        }
+
+        private void command_add_image_executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            button_upload_photo_Click_1(null, null);
+        }
+
+        private void command_account_scroll_executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (combobox_accounts.Items.Count > 1)
+            {
+                int selected_index = combobox_accounts.SelectedIndex;
+                selected_index--;
+                if (selected_index < 0)
+                {
+                    selected_index = combobox_accounts.Items.Count - 1;
+                }
+                combobox_accounts.SelectedIndex = selected_index;
+            }
+        }
+
+        private void command_cancel_executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
     }
 }

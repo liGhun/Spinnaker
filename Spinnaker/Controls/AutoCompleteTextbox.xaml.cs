@@ -294,16 +294,16 @@ namespace Spinnaker.Controls
 
             #region links as markups
 
-
             string pattern = @"\[(?<markupText>[^\]]+)\]\((?<markupLink>[^)]+)\)";
             NumberOfChars = textBoxContent.Text.Length;
             MarkdownLinksInText.Clear();
             foreach (Match match in Regex.Matches(textBoxContent.Text, pattern, RegexOptions.IgnoreCase)) {
-                MarkdownLinksInText.Add(match.Groups["markupLink"].Value,match.Groups["markupText"].Value);
+                if (!MarkdownLinksInText.ContainsKey(match.Groups["markupLink"].Value))
+                {
+                    MarkdownLinksInText.Add(match.Groups["markupLink"].Value, match.Groups["markupText"].Value);
+                }
                 NumberOfChars -= 4 + match.Groups["markupLink"].Value.Length;
             } 
-
-
 
             #endregion 
         }

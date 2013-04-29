@@ -5,7 +5,16 @@
         Title="Compose a new post" Height="171.046" Width="300" Topmost="True"
     WindowStyle="None" AllowsTransparency="True"
     Background="Transparent"
+    xmlns:ui="clr-namespace:Spinnaker.UserInterface"
     >
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static ui:Compose.insert_link_command}" Executed="command_insert_link_executed"/>
+        <CommandBinding Command="{x:Static ui:Compose.add_image_command}" Executed="command_add_image_executed"/>
+        <CommandBinding Command="{x:Static ui:Compose.account_scroll_command}" Executed="command_account_scroll_executed"/>
+        <CommandBinding Command="{x:Static ui:Compose.cancel_command}" Executed="command_cancel_executed"/>
+    </Window.CommandBindings>
+
     <Border Name="border_with_roundes_edges">
     <Grid Background="Transparent" MouseMove="Grid_MouseMove_1">
         <Controls:AutoCompleteTextbox x:Name="autoCompeteTextbox_post" Margin="10,10,10,41"/>
@@ -40,8 +49,28 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Name="button_upload_photo" Margin="0,0,215,14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="14" Click="button_upload_photo_Click_1" ToolTip="Upload an image" MouseRightButtonDown="button_upload_photo_MouseRightButtonDown_1" AllowDrop="True" Drop="button_upload_photo_Drop_1">
+            <Button Name="button_upload_photo" Margin="0,0,215,14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="14" Click="button_upload_photo_Click_1" ToolTip="Upload an image (ctrl - i) or drag &amp; drop image here" MouseRightButtonDown="button_upload_photo_MouseRightButtonDown_1" AllowDrop="True" Drop="button_upload_photo_Drop_1">
                 <Image Name="image_upload_photo" Source="/Spinnaker;component/Images/camera_white.png">
+                    <Image.Style>
+                        <Style>
+                            <Setter Property="Image.Opacity" Value="0.7" />
+                            <Style.Triggers>
+                                <Trigger  Property="Image.IsMouseOver" Value="True">
+                                    <Setter Property="Image.Opacity" Value="1.0" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Name="button_insert_link" Margin="0,0,240,14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="14" Click="button_insert_link_Click" ToolTip="Insert link (ctrl - l)">
+                <Image Name="image_insert_link" Source="/Spinnaker;component/Images/link.png">
                     <Image.Style>
                         <Style>
                             <Setter Property="Image.Opacity" Value="0.7" />
