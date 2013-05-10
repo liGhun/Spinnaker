@@ -171,7 +171,7 @@ namespace Spinnaker.UserInterface
                 {
                     path_to_be_uploaded_image = filename;
                     image_upload_photo.Opacity = 1.0;
-                    autoCompeteTextbox_post.textBoxContent.Text += " photos.app.net/{post_id}/1";
+                    autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Insert(autoCompeteTextbox_post.textBoxContent.CaretIndex, "[" + System.IO.Path.GetFileNameWithoutExtension(path_to_be_uploaded_image) + "](photos.app.net/{post_id}/1)");
                     button_upload_photo.ToolTip = "Right click to remove the image";
                 }
             }
@@ -179,11 +179,12 @@ namespace Spinnaker.UserInterface
 
         private void button_upload_photo_MouseRightButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            path_to_be_uploaded_image = "";
             image_upload_photo.Opacity = 0.7;
-            if(autoCompeteTextbox_post.textBoxContent.Text.Contains("photos.app.net/{post_id}/1")) {
-                autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Replace("photos.app.net/{post_id}/1","");
+            if (autoCompeteTextbox_post.textBoxContent.Text.Contains("[" + System.IO.Path.GetFileNameWithoutExtension(path_to_be_uploaded_image) + "](photos.app.net/{post_id}/1)"))
+            {
+                autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Replace("[" + System.IO.Path.GetFileNameWithoutExtension(path_to_be_uploaded_image) + "](photos.app.net/{post_id}/1)", "");
             }
+            path_to_be_uploaded_image = "";
             button_upload_photo.ToolTip = "Upload an image";
         }
 
@@ -218,7 +219,7 @@ namespace Spinnaker.UserInterface
             {
                 if (e.success)
                 {
-                    autoCompeteTextbox_post.textBoxContent.Text += " " + e.insert_string;
+                    autoCompeteTextbox_post.textBoxContent.Text.Insert(autoCompeteTextbox_post.textBoxContent.CaretIndex, e.insert_string);
                 }
             }
         }

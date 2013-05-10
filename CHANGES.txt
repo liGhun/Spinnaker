@@ -1,3 +1,8 @@
+0.5.1
+Added images are now embedded with a MarkDown syntax link
+Images and text links are now inserted at current cursor position
+Added auto update
+
 0.5
 Added MarkDown link parsing - example: [Link title](http://www.li-ghun.de)
 Added link add window (which will add a MarkDown link)
