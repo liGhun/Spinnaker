@@ -182,7 +182,7 @@ namespace Spinnaker.UserInterface
             image_upload_photo.Opacity = 0.7;
             if (autoCompeteTextbox_post.textBoxContent.Text.Contains("[" + System.IO.Path.GetFileNameWithoutExtension(path_to_be_uploaded_image) + "](photos.app.net/{post_id}/1)"))
             {
-                autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Replace("[" + System.IO.Path.GetFileNameWithoutExtension(path_to_be_uploaded_image) + "](photos.app.net/{post_id}/1)", "");
+                autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Replace("[" + System.IO.Path.GetFileNameWithoutExtension(path_to_be_uploaded_image) + "](photos.app.net/{post_id}/1)", "");
             }
             path_to_be_uploaded_image = "";
             button_upload_photo.ToolTip = "Upload an image";
@@ -219,7 +219,7 @@ namespace Spinnaker.UserInterface
             {
                 if (e.success)
                 {
-                    autoCompeteTextbox_post.textBoxContent.Text.Insert(autoCompeteTextbox_post.textBoxContent.CaretIndex, e.insert_string);
+                    autoCompeteTextbox_post.textBoxContent.Text = autoCompeteTextbox_post.textBoxContent.Text.Insert(autoCompeteTextbox_post.textBoxContent.CaretIndex, e.insert_string);
                 }
             }
         }
