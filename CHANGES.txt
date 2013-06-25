@@ -1,3 +1,10 @@
+0.5.2
+Link parser now also on text links even when you provide MarkDown links too
+Dropdown of accounts now better readable
+
+0.5.1.1
+Fix in MarkDown imsert at cursur position
+
 0.5.1
 Added images are now embedded with a MarkDown syntax link
 Images and text links are now inserted at current cursor position

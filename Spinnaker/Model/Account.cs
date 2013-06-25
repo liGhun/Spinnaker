@@ -65,7 +65,7 @@ namespace Spinnaker.Model
                         }
                     }
                 }
-                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text, toBeEmbeddedFiles:toBeAddedFiles, entities:entities);
+                Tuple<Post,ApiCallResponse> response = Posts.create(this.access_token, text, toBeEmbeddedFiles:toBeAddedFiles, entities:entities, parse_links:true);
                 return response.Item2.success;
             }
             return false;

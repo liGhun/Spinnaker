@@ -24,6 +24,11 @@
         <Setter Property="Foreground" Value="#eee"></Setter>
     </Style>
 
+    <Style TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Background" Value="#000"></Setter>
+        <Setter Property="Foreground" Value="#eee"></Setter>
+    </Style>
+
     <Style TargetType="{x:Type CheckBox}">
         <Setter Property="Foreground" Value="#eee"></Setter>
     </Style>
